@@ -34,7 +34,6 @@ def take_order():
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    # Calculate total cost for the current order
     total_cost = sum(item["price"] * item["quantity"] for item in order_details)
 
     # Store the complete order
@@ -61,11 +60,11 @@ def view_orders():
 # Main loop for the ordering system
 while True:
     print("Coil Ordering/Sales System")
-    print("1. New Order")
+    print("1. Place a New Order")
     print("2. View All Orders")
     print("3. Exit")
     
-    choice = input("Enter your choice: ")
+    choice = input("Please choose: ")
 
     if choice == '1':
         take_order()
