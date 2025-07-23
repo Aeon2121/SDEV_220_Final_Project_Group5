@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from ..inventory_module import models as Inventory
+from inventory_module import models as Inventory
 
-class Order(models.Model, *Inventory):
+class Order(models.Model):
     Customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, unique = True, null = False)
     Order_Number = models.IntegerField(max_length=25, unique = True, null = False)
     Order_Info = Inventory.models.CharField(max_length=200)
