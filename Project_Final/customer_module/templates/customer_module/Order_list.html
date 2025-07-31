@@ -2,13 +2,11 @@
 {% extends 'customer_module/base.html' %}
 
 {% block content %}
-    {% for order in orders %}
-        <article class="Order">
-            <time class="date">
-                {{ Order.Order_date }}
-            </time>
-            <h2><a href="{% url 'Order_detail' pk=order.pk %}">{{ Order.Order_Number }}</a></h2>
-            <p>{{ Order.Order_Number|linebreaksbr }}</p>
-        </article>
-    {% endfor %}
+    {% for order in Orders %}
+    <article class="Order">
+        <time class="date">{{ order.Order_date }}</time>
+        <h2><a href="{% url 'Order_detail' pk=order.pk %}">{{ order.Order_Number }}</a></h2>
+        <p>{{ order.Order_Number|linebreaksbr }}</p>
+    </article>
+{% endfor %}
 {% endblock %}

@@ -9,10 +9,3 @@ class Order(models.Model):
     Order_Info = Inventory.models.CharField(max_length=200)
     Order_date = models.DateTimeField(default=timezone.now, unique = True, null = False)
 
-    def Order(self):
-        self.Order_date = timezone.now()
-        self.save()
-
-    def __str__(self):
-        return self.Order_Number
-# Create your models here.
