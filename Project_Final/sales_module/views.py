@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from .models import Coil, Order, OrderItem
 
-def take_order(request):
-    coils = Coil.objects.all()  # Fetch all available coils
+def place_order(request):
+    coils = Coil.objects.all()
     if request.method == "POST":
         customer_name = request.POST['customer_name']
         order = Order.objects.create(customer_name=customer_name, total_cost=0)
@@ -15,20 +15,18 @@ def take_order(request):
             quantity = int(item_data[1])
             coil = Coil.objects.get(id=coil_id)
 
-            # Calculate total cost
+           
             total_cost += coil.price * quantity
 
-            # Create order item
             OrderItem.objects.create(order=order, coil=coil, quantity=quantity)
 
-        # Update order total cost
         order.total_cost = total_cost
         order.save()
 
         return redirect('view_orders') 
     else:
-        return render(request, 'sales/take_order.html', {'coils': coils})
+        return render(request, 'sales/order.html', {'coils': coils})
 
-def view_orders(request):
+def view_order(request):
     orders = Order.objects.all()
-    return render(request, 'sales/view_orders.html', {'orders': orders})
+    return render(request, 'sales/ordersview.html', {'orders': orders})
