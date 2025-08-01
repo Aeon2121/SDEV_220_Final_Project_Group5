@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Screen</title>
+</head>
+<body>
+    <h1>Lets Place your Order</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br>
+
+        <h3>Available Coils:</h3>
+        {% for coil in coils %}
+            <label>
+                <input type="checkbox" name="items" value="{{ coil.id }},1"> 
+                {{ coil.name }} - ${{ coil.price }}
+            </label><br>
+        {% endfor %}
+
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
