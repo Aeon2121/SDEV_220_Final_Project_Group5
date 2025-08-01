@@ -1,5 +1,4 @@
 from django.db import models
-from customer_module import models as Order
 
 class Inventory(models.Model):
     # We need the material type, finish, the length, and the price per length of the coils

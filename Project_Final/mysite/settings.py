@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "sales_module",
     "employee_module",
     "customer_module",
+    "SDEV_220_Final_Project_Group5",
+    "Project_Final",
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,7 @@ STATIC_ROOT = BASE_DIR / "static"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"

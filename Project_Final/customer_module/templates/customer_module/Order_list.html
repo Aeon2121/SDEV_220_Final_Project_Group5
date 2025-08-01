@@ -2,11 +2,15 @@
 {% extends 'customer_module/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
     {% for order in Orders %}
     <article class="Order">
         <time class="date">{{ order.Order_date }}</time>
         <h2><a href="{% url 'Order_detail' pk=order.pk %}">{{ order.Order_Number }}</a></h2>
         <p>{{ order.Order_Number|linebreaksbr }}</p>
     </article>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <h1>(Login Required)</h1>
+{% endif %}
 {% endblock %}

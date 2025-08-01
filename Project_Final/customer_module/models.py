@@ -1,11 +1,40 @@
+import sys
+import os
+current_dir = os.path.dirname(os.path.realpath(__file__))
+parent_dir = os.path.dirname(current_dir)
+
+sys.path.append(parent_dir)
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from inventory_module import models as Inventory
+from django.contrib.auth.models import User
+
+from inventory_module.models import Inventory
+from ...online_ordering import Customer
+
+
 
 class Order(models.Model):
-    Customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, unique = True, null = False)
-    Order_Number = models.IntegerField(max_length=25, unique = True, null = False)
-    Order_Info = Inventory.models.CharField(max_length=200)
-    Order_date = models.DateTimeField(default=timezone.now, unique = True, null = False)
+    Customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null = False)
+    Order_Number = models.IntegerField(unique = True, null = False)
+    Order_Info = models.CharField(max_length=200, null = False)
+    Order_date = models.DateTimeField(blank=True, null=True)
 
+    def set_customer(self):
+        self.Customer = Customer.__name__
+
+    def set_order_number(self):
+        self.Order_Number = Inventory.Order_Number
+
+    def set_order_info(self):
+        self.Order_Info = Inventory.Order_info
+
+    def publish(self):
+        self.order_date = timezone.now()
+        self.save()
+
+    def __init__(self):
+        self.set_customer()
+        self.set_order_info()
+        self.set_order_number()
