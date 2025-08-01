@@ -8,7 +8,7 @@ available_coils = {
     3: {"name": "Coil 3", "price": 0.03},
     4: {"test subject": "Another name", "4.50": 5.10)
 }
-
+#Need integration from the inventory section
 def take_order():
     global order_counter
     customer_name = input("Enter customer name: ")
