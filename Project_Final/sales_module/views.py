@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from .models import Coil, Order, OrderItem
-from .forms import OrderForm, OrderItemForm
 
 def take_order(request):
     coils = Coil.objects.all()  # Fetch all available coils
