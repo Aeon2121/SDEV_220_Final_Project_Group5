@@ -1,19 +1,10 @@
-import sys
-import os
-current_dir = os.path.dirname(os.path.realpath(__file__))
-parent_dir = os.path.dirname(current_dir)
-
-sys.path.append(parent_dir)
-
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-from inventory_module.models import Inventory
+from ..inventory_module.models import Inventory
 from ...online_ordering import Customer
-
-
 
 class Order(models.Model):
     Customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null = False)

@@ -5,7 +5,7 @@ from .forms import OrderForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
-from sales_module import OrderSys1
+from ..sales_module import OrderSys1
 
 
 def Order_list(request):
@@ -30,5 +30,5 @@ def Order_new(request):
             return redirect("Order_detail", pk=order.pk)
     else:
         form = OrderForm()
-    return render(request, "customer_module/Order_edit.html", {"form": form})
+    return render(request, "customer_module/Order_detail.html", {"form": form})
 
