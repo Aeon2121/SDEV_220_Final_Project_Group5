@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Orders</title>
+</head>
+<body>
+    <h1>Order List</h1>
+    {% if orders %}
+        {% for order in orders %}
+            <h2>Order by {{ order.customer_name }} ({{ order.date }})</h2>
+            <ul>
+                {% for item in order.items.all %}
+                    <li>{{ item.quantity }} x {{ item.coil.name }} - ${{ item.coil.price }} each</li>
+                {% endfor %}
+            </ul>
+            <p>Total Cost: ${{ order.total_cost }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No orders placed yet.</p>
+    {% endif %}
+</body>
+</html>
