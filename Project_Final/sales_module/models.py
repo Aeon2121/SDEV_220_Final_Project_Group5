@@ -12,7 +12,7 @@ class Order(models.Model):
     total_cost = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"Order by {self.customer_name} on {self.date}"
+        return f"Order by {self.customer_name}"
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
