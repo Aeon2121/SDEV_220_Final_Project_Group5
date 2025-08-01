@@ -1,6 +1,7 @@
 orders = []
+order_counter = 1
 
-# Define available coil types with item numbers and prices
+# This will probably need to be altered to a database integration 
 available_coils = {
     1: {"name": "Coil 1", "price": 0.01},
     2: {"name": "Coil 2", "price": 0.02},
@@ -9,12 +10,12 @@ available_coils = {
 }
 
 def take_order():
-    """Takes a new order from the customer."""
+    global order_counter
     customer_name = input("Enter customer name: ")
-    order_details = []  # List to store items for the current order
+    order_details = [] 
 
     while True:
-        print("Available Coils:")
+        print("Available Coils currently:")
         for item_num, coil_info in available_coils.items():
             print(f"{item_num}. {coil_info['name']} - ${coil_info['price']:.2f}")
 
@@ -37,14 +38,14 @@ def take_order():
 
     total_cost = sum(item["price"] * item["quantity"] for item in order_details)
 
-    # Store the complete order
-    orders.append({
+    
+    orders[order_counter] = {
         "customer_name": customer_name,
         "items": order_details,
         "total_cost": total_cost
-    })
+    }
     print("Order placed successfully!")
-
+    order_counter += 1
 def view_orders():
     if not orders:
         print("You have no orders placed yet.")
