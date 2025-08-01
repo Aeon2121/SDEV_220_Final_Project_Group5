@@ -14,10 +14,10 @@
                     <li>{{ item.quantity }} x {{ item.coil.name }} - ${{ item.coil.price }} each</li>
                 {% endfor %}
             </ul>
-            <p>Total Cost: ${{ order.total_cost }}</p>
+            <p>Total Cost of Order: ${{ order.total_cost }}</p>
         {% endfor %}
     {% else %}
-        <p>No orders placed yet.</p>
+        <p>You have not placed any orders.</p>
     {% endif %}
 </body>
 </html>
