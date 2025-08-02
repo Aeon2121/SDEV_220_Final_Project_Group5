@@ -5,11 +5,21 @@
 {% if user.is_authenticated %}
     {% for order in Orders %}
     <article class="Order">
-        <time class="date">{{ order.Order_date }}</time>
-        <h2><a href="{% url 'Order_detail' pk=order.pk %}">{{ order.Order_Number }}</a></h2>
-        <p>{{ order.Order_Number|linebreaksbr }}</p>
+        <h1>Order Details</h1>
+        <body>
+            <p>Order Number: {{ Order.Order_Number }}</p>
+            <p>Order Info: {{ Order.Order_Info|linebreaksbr }}</p>
+            <p>Order Date: {{ Order.Order_date }}</p>
+        </body>
     </article>
     {% endfor %}
+    {% if Orders %}
+        <aside class="actions">
+            <a class="btn btn-secondary" role="button" href="{% url 'Order_new' %}">New Order</a>
+        </aside>
+    {% else %}
+        <p>No orders found.</p>
+    {% endif %}
 {% else %}
     <h1>(Login Required)</h1>
 {% endif %}

@@ -27,8 +27,8 @@ def Order_new(request):
             order.Customer = request.user
             order.Order_date = timezone.now()
             order.save()
-            return redirect("Order_detail", pk=order.pk)
+            return redirect("sales_module/order.html", pk=order.pk)
     else:
         form = OrderForm()
-    return render(request, "customer_module/Order_detail.html", {"form": form})
+    return render(request, "customer_module/Order_new.html", {"form": form})
 

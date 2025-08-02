@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'customer_module/base.html' %}
+
+{% block content %}
+        {% if user.is_authenticated %}
+        <article class="Order">
+            <h1>Order Details</h1>
+            <body>
+                <p>Order Number: {{ Order.Order_Number }}</p>
+                <p>Order Info: {{ Order.Order_Info|linebreaksbr }}</p>
+                <p>Order Date: {{ Order.Order_date }}</p>
+            </body>
+        </article>
+            <aside class="actions">
+            <a class="btn btn-secondary" role="button" href="{% url 'Order_new' %}">New Order</a>
+            </aside>
+        {% else %}
+        <article>
+            <h1>Order Details (Login Required)</h1>
+        </article>
+        {% endif %}
+{% endblock %}

@@ -13,20 +13,24 @@
         <header class="page-header">
             <div class="container">
                 {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="top-menu">
+                    {% include "registration/_logout.html" %}
+                    </a>
                     <a href="{% url 'Order_new' %}" class="top-menu">
                         {% include './icons/cart-plus-fill.svg' %}
+                    <span>New Order</span>
                     </a>
                     <h1><a href="/">Customer Order Page</a></h1>
-                    <p><span id="description">Hello {{ user.username }} <small><a href="{% url 'logout' %}">(Log out)</a></small></span></p>
-                    <p><a href="/inventory">Inventory</a></p>
+                    <p><span id="description">Hello {{ user.username }}</span></p>
+                    <p><a href="/inventory">Available Inventory</a>   |  <a href="/Order_list">Customer Order List</a></p>
                 {% else %}
                 <a href="{% url 'login' %}" class="top-menu">
                     {% include './icons/door-open.svg' %}
                     <span>Log in</span>
                 </a>
-
+                    
                 <h1><a href="/">Customer Login Page</a></h1>
-                <p><span id="description">Please login using the link shown here.</span></p>
+                <p><span id="description">Please login using the link shown to the far right.   ---></span></p>
                 {% endif %}
             </div>
         </header>

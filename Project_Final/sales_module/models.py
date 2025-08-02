@@ -8,7 +8,7 @@ class Coil(models.Model):
         return self.name
 
 class Order(models.Model):
-    customer_name = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=100, default="")
     total_cost = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
