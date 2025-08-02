@@ -7,9 +7,10 @@
     <article class="Order">
         <h1>Order Details</h1>
         <body>
-            <p>Order Number: {{ Order.Order_Number }}</p>
-            <p>Order Info: {{ Order.Order_Info|linebreaksbr }}</p>
-            <p>Order Date: {{ Order.Order_date }}</p>
+            <p>Order Number: {{ order.order_number }}</p>
+            <p>Order Info: {{ order.order_info }}</p>
+            <p>Order Date: {{ order.order_date }}</p>
+            <p>Customer Name: {{ order.customer_name }}</p>
         </body>
     </article>
     {% endfor %}

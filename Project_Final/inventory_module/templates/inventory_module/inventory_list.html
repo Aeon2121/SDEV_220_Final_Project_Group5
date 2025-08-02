@@ -1,4 +1,4 @@
-{% extends 'inventory_module/base.html' %}
+{% extends 'customer_module/base.html' %}
 
 {% block content %}
     <h1>Inventory List</h1>
@@ -8,9 +8,17 @@
             <p>Coil Number: {{ item.coil_number }}</p>
             <p>Total Price: ${{ item.price}}</p>
             <p>Status: {{ item.status }}</p>
+            <p>Customer Number: {{ item.order_number }}</p>
             <p>{{ item.description|linebreaksbr }}</p>
+            <p>-----------------------------------</p>
         </article>
     {% empty %}
         <p>No inventory items found.</p>
     {% endfor %}
+    <h2>Create Inventory Entry</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
 {% endblock %}
