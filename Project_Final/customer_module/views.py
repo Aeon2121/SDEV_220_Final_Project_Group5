@@ -5,11 +5,11 @@ from .forms import OrderForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
-from ..sales_module import OrderSys1
+from sales_module import OrderSys1
 
 
 def Order_list(request):
-    Orders = Order.objects.filter(Order_date__lte=timezone.now()).order_by("Order_date")
+    Orders = Order.objects.filter(order_date__lte=timezone.now()).order_by("order_date")
     return render(request, "customer_module/Order_list.html", {"Orders": Orders})
 
 @login_required

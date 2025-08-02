@@ -6,7 +6,7 @@ available_coils = {
     1: {"name": "Coil 1", "price": 0.01},
     2: {"name": "Coil 2", "price": 0.02},
     3: {"name": "Coil 3", "price": 0.03},
-    4: {"test subject": "Another name", "4.50": 5.10)
+    4: {"test subject": "Another name", "4.50": 5.10}
 }
 #Need integration from the inventory section
 def take_order():

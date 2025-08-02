@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     "sales_module",
     "employee_module",
     "customer_module",
-    "SDEV_220_Final_Project_Group5",
-    "Project_Final",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +58,7 @@ ROOT_URLCONF = "mysite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

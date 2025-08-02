@@ -15,7 +15,7 @@
             </time>
         {% else %}
                 <aside class="actions">
-                    <a class="btn btn-secondary" role="button" href="{% url 'Order_New' pk=Order.pk %}">New Order</a>
+                    <a class="btn btn-secondary" role="button" href="{% url 'Order_new' %}">New Order</a>
                 </aside>
         {% endif %}
         <h2>{{ Order.Order_Number }}</h2>

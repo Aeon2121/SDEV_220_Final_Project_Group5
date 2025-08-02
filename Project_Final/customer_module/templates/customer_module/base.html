@@ -18,14 +18,16 @@
                     </a>
                     <h1><a href="/">Customer Order Page</a></h1>
                     <p><span id="description">Hello {{ user.username }} <small><a href="{% url 'logout' %}">(Log out)</a></small></span></p>
-                {% endif %}
+                    <p><a href="/inventory">Inventory</a></p>
                 {% else %}
                 <a href="{% url 'login' %}" class="top-menu">
                     {% include './icons/door-open.svg' %}
                     <span>Log in</span>
                 </a>
+
                 <h1><a href="/">Customer Login Page</a></h1>
                 <p><span id="description">Please login using the link shown here.</span></p>
+                {% endif %}
             </div>
         </header>
         <main class="content container">
