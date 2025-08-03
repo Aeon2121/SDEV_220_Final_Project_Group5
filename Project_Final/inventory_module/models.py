@@ -7,13 +7,6 @@ class Inventory(models.Model):
     Price_per_length = models.IntegerField()
     Order_info = models.CharField(max_length=200)
     coil_number = models.IntegerField()
-    order_number = models.ForeignKey(
-        'customer_module.Order',
-        on_delete=models.CASCADE,
-        related_name='inventory_items',
-        blank=True,
-        null=True
-    )
     STATUS_CHOICES = [
         ('To be created', 'To be created'),
         ('Created', 'Created'),

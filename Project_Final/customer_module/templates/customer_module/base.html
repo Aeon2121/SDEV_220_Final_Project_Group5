@@ -31,6 +31,10 @@
                     
                 <h1><a href="/">Customer Login Page</a></h1>
                 <p><span id="description">Please login using the link shown to the far right.   ---></span></p>
+                                    <a href="{% url 'register' %}" class="top-menu">
+                                        {% include './icons/cart-plus-fill.svg' %}
+                                        <span>Register</span>
+                                    </a>
                 {% endif %}
             </div>
         </header>

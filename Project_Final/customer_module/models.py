@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from inventory_module.models import Inventory
 
-from sales_module import OrderSys1
 
 class Order(models.Model):
     customer = models.ForeignKey(
@@ -25,12 +24,6 @@ class Order(models.Model):
     def publish(self):
         self.order_date = timezone.now()
         self.save()
-
-    def set_order_number(self):
-        self.Order_Number = OrderSys1.order_counter
-
-    def set_order_info(self):
-        self.Order_Info = OrderSys1.orders[self.order_number]
 
     def __str__(self):
         return f"Order #{self.order_number} by {self.customer}"

@@ -1,12 +1,10 @@
 from django.utils import timezone
 from .models import Order
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import OrderForm
-from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-
-from sales_module import OrderSys1
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 def Order_list(request):
     Orders = Order.objects.filter(order_date__lte=timezone.now()).order_by("order_date")
@@ -23,12 +21,19 @@ def Order_new(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            OrderSys1.take_order()
             order.Customer = request.user
             order.Order_date = timezone.now()
             order.save()
-            return redirect("sales_module/order.html", pk=order.pk)
     else:
         form = OrderForm()
     return render(request, "customer_module/Order_new.html", {"form": form})
 
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'customer_module/register.html', {'form': form})

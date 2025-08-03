@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "inventory_module",
-    "sales_module",
-    "employee_module",
     "customer_module",
 ]
 
